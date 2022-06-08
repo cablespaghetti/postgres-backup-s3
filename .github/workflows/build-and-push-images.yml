@@ -40,9 +40,9 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
-            type=raw,event=branch,value=${{ matrix.alpine }}
-            type=sha,prefix=${{ matrix.alpine }}
-            type=ref,prefix=${{ matrix.alpine }},suffix=,event=branch
+            type=raw,event=branch,value=${{ matrix.postgres }}
+            type=sha,prefix=${{ matrix.postgres }}-
+            type=ref,prefix=${{ matrix.postgres }}-,suffix=,event=branch
 
       - name: Build and push
         uses: docker/build-push-action@v3
