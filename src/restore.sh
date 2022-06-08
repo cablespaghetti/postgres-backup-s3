@@ -61,7 +61,9 @@ else
   file_type=".dump.gpg"
 fi
 
-if [ $# -eq 1 ]; then
+if [ "$USE_TIMESTAMP" = "no" ]; then
+  key_suffix="${POSTGRES_DATABASE}${file_type}"
+elif [ $# -eq 1 ]; then
   timestamp="$1"
   key_suffix="${POSTGRES_DATABASE}_${timestamp}${file_type}"
 else

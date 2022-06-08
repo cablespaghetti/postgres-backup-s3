@@ -33,6 +33,8 @@ pg_backup_s3:
 - Run `docker exec <container name> sh backup.sh` to trigger a backup ad-hoc
 - Use `BACKUP_KEEP_DAYS` to set time for how long you want to keep backup.
 
+If you wise to use a versioned bucket and lifecycle policies to manage your backups you can use the `USE_TIMESTAMP` environment variable set to `no` to disable timestamps in filenames for both backup and restore.
+
 ## Restore
 > **WARNING:** DATA LOSS! All database objects will be dropped and re-created.
 ### ... from latest backup
