@@ -16,9 +16,9 @@ pg_backup_s3:
     SCHEDULE: '@weekly'     # optional
     BACKUP_KEEP_DAYS: 7     # optional
     PASSPHRASE: passphrase  # optional
-    S3_REGION: region
-    S3_ACCESS_KEY_ID: key
-    S3_SECRET_ACCESS_KEY: secret
+    AWS_DEFAULT_REGION: region
+    AWS_ACCESS_KEY_ID: key
+    AWS_SECRET_ACCESS_KEY: secret
     S3_BUCKET: my-bucket
     S3_PREFIX: backup
     POSTGRES_HOST: postgres
