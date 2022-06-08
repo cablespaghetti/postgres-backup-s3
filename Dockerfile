@@ -1,9 +1,18 @@
-ARG ALPINE_VERSION
-FROM alpine:${ALPINE_VERSION}
+FROM amazon/aws-cli
 ARG TARGETARCH
 
-ADD src/install.sh install.sh
-RUN sh install.sh $TARGETARCH && rm install.sh
+# Install pg_dump
+ARG POSTGRES_VERSION
+RUN amazon-linux-extras enable postgresql${POSTGRES_VERSION}
+RUN yum install -y postgresql tar gzip
+RUN yum clean all
+
+# install go-cron
+RUN curl -L https://github.com/ivoronin/go-cron/releases/download/v0.0.5/go-cron_0.0.5_linux_${TARGETARCH}.tar.gz -O
+RUN tar xvf go-cron_0.0.5_linux_${TARGETARCH}.tar.gz
+RUN rm go-cron_0.0.5_linux_${TARGETARCH}.tar.gz
+RUN mv go-cron /usr/local/bin/go-cron
+RUN chmod u+x /usr/local/bin/go-cron
 
 ENV POSTGRES_DATABASE ''
 ENV POSTGRES_HOST ''
