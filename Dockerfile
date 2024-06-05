@@ -24,6 +24,7 @@ ENV BACKUP_KEEP_DAYS ''
 ENV USE_TIMESTAMP 'yes'
 
 ADD src/run.sh run.sh
+ADD src/env.sh env.sh
 ADD src/backup.sh backup.sh
 ADD src/restore.sh restore.sh
 
