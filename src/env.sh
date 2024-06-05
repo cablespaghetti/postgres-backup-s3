@@ -1,3 +1,5 @@
+mkdir /tmp/.aws
+
 if [ -z "$S3_BUCKET" ]; then
   echo "You need to set the S3_BUCKET environment variable."
   exit 1
