@@ -42,7 +42,10 @@ fi
 conn_opts="-h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -d $POSTGRES_DATABASE"
 
 echo "Restoring from backup..."
+# Don't exit on pg_restore error because it returns 1 even when there are only warnings
+set +e
 pg_restore $conn_opts --clean --if-exists db.dump
+set -e
 rm db.dump
 
 echo "Restore complete."
