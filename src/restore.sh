@@ -1,9 +1,11 @@
 #! /bin/sh
 
-set -u # `-e` omitted intentionally, but i can't remember why exactly :'(
+set -eu
 set -o pipefail
 
 source ./env.sh
+
+cd /tmp
 
 s3_uri_base="s3://${S3_BUCKET}/${S3_PREFIX}"
 
