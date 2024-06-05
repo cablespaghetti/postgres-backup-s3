@@ -1,6 +1,6 @@
 #! /bin/sh
 
-set -eu
+set -e
 set -o pipefail
 
 source ./env.sh
